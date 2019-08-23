@@ -49,11 +49,12 @@ class ChatUI:
         strMsg = 'Me:' + time.strftime("%Y-%m-%d %H:%M:%S",
                                       time.localtime()) + '\n '
         self.txtMsgList.insert(END, strMsg, 'greencolor')
-        self.txtMsgList.insert(END, self.txtMsg.get('0.0', END))
+        new_message = self.txtMsg.get('0.0', END)
+        self.txtMsgList.insert(END, new_message)
         self.txtMsgList.insert(END, '\n')
         self.txtMsg.delete('0.0', END)
 
-        self._replyMsg()
+        self._replyMsg(new_message)
 
     def _replyMsg(self, new_message):  # make reply
         strMsg2 = 'Bot:' + time.strftime("%Y-%m-%d %H:%M:%S",
